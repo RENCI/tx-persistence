@@ -2,6 +2,10 @@
 set -e
 
 printenv
+if [ ! -v MONGO_NON_ROOT_PASSWORD ]
+then
+    MONGO_NON_ROOT_PASSWORD=$(<$MONGO_NON_ROOT_PASSWORD_FILE)
+fi
 
 mongo <<EOF
 use admin
